@@ -3,7 +3,7 @@ import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from "@reduxjs/toolk
 import type { RootState } from "../../app/store";
 import { setCredentials, logout } from "./authSlice";
 
-const baseUrl = 'https://time-tracker-app-backend-1.onrender.com'
+const baseUrl = 'https://time-tracker-app-backend-1.onrender.com/api'
 
 export const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> =
   async (args, api, extraOptions) => {
