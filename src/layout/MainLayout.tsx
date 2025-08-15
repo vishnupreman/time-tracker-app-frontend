@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, Outlet ,useNavigate} from "react-router-dom";
 import { useLogoutMutation } from "../features/auth/authApi";
 import { useDispatch } from "react-redux";
-import { logout as logoutAction } from "../features/auth/authSlice";
+import { logout } from "../features/auth/authSlice";
 
 const MainLayout: React.FC = () => {
   const [logoutApi] = useLogoutMutation()
@@ -15,7 +15,7 @@ const MainLayout: React.FC = () => {
     } catch (error) {
       console.error("Logout API error:", error);
     }finally{
-      dispatch(logoutAction())
+      dispatch(logout())
       navigate('/login')
     }
   }
