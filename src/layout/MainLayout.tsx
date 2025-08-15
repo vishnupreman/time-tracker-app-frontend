@@ -1,7 +1,24 @@
 import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet ,useNavigate} from "react-router-dom";
+import { useLogoutMutation } from "../features/auth/authApi";
+import { useDispatch } from "react-redux";
+import { logout as logoutAction } from "../features/auth/authSlice";
 
 const MainLayout: React.FC = () => {
+  const [logoutApi] = useLogoutMutation()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleLogout = async()=>{
+    try {
+      await logoutApi().unwrap()
+    } catch (error) {
+      console.error("Logout API error:", error);
+    }finally{
+      dispatch(logoutAction())
+      navigate('/login')
+    }
+  }
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
@@ -41,6 +58,12 @@ const MainLayout: React.FC = () => {
             Timer
           </NavLink>
         </nav>
+          <button
+          onClick={handleLogout}
+          className="mt-6 w-full p-2 bg-red-600 rounded hover:bg-red-700"
+        >
+          Logout
+        </button>
       </aside>
 
       {/* Main Content */}

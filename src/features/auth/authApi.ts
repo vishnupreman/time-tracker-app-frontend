@@ -1,5 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQueryWithReauth } from "./authBaseQuery";
+import { logout } from "./authSlice";
 
 interface User {
   id: string;
@@ -27,8 +28,14 @@ export const authApi = createApi({
     getDashboard: builder.query<{ message: string; user: User }, void>({
       query: () => "/dashboard",
     }),
+    logout:builder.mutation<void,void>({
+        query:()=>({
+          url:'/auth/logout',
+          method:'POST'
+        })
+    }),
   }),
 });
 
-export const { useRegisterMutation, useLoginMutation, useGetDashboardQuery } =
+export const { useRegisterMutation, useLoginMutation, useGetDashboardQuery ,useLogoutMutation} =
   authApi;
