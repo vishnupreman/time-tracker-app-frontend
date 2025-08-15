@@ -5,7 +5,7 @@ import { useCreateProjectMutation, useDeleteProjectMutation, useGetProjectsQuery
 interface Project {
   _id: string;
   name: string;
-  description: string;
+  description?: string;
 }
 
 const ProjectsPage: React.FC = () => {
@@ -30,7 +30,7 @@ const ProjectsPage: React.FC = () => {
   const openEditModal = (project: Project) => {
     setCurrentProject(project);
     setName(project.name);
-    setDescription(project.description);
+    setDescription(project.description || "");
     setIsModalOpen(true);
   };
 

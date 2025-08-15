@@ -17,8 +17,8 @@ interface Task {
 }
 
 const TasksPage: React.FC = () => {
-  const { data: tasks = [], isLoading: tasksLoading } = useGetTasksQuery();
-  const { data: projects = [], isLoading: projectsLoading } = useGetProjectsQuery();
+  const { data: tasks = []} = useGetTasksQuery();
+  const { data: projects = []} = useGetProjectsQuery();
 
   const [createTask] = useCreateTaskMutation();
   const [updateTask] = useUpdateTaskMutation();

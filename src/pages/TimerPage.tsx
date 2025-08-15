@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from "react";
 import {
   useGetProjectsQuery,
- type Project,
+ 
 } from "../features/projects/projectApi";
 import {
   useGetTasksQuery,
-  type Task,
+  
 } from "../features/task/taskApi";
 import {
   useGetEntriesQuery,
@@ -14,7 +14,7 @@ import {
   useStopTimerMutation,
   useAddManualEntryMutation,
   useDeleteEntryMutation,
- type ITimeEntry,
+
 } from "../features/timer/timerApi";
 
 const TimerPage: React.FC = () => {
@@ -25,7 +25,7 @@ const TimerPage: React.FC = () => {
   // Timer state
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [timer, setTimer] = useState(0); // seconds
-  const [intervalId, setIntervalId] = useState<NodeJS.Timer | null>(null);
+  const [intervalId, setIntervalId] = useState<number | null>(null);
 
   // Manual entry
   const [manualStart, setManualStart] = useState("");
